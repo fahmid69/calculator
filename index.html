@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+
+    
+    <div class="container">
+
+        <h1>Calculator</h1>
+
+        <div class="input">
+            <input id="secondaryInput" type="text" disabled>
+            <input id="mainInput" type="text" disabled>
+        </div>
+
+        <div id="button" class="button">
+            <div class="btnRow1">
+                <button class="btn top">C</button>
+                <button class="btn top">⌫</button>
+                <button class="btn num">/</button>
+            </div>
+
+            <div class="btnRow">
+                <button class="btn num">7</button>
+                <button class="btn num">8</button>
+                <button class="btn num">9</button>
+                <button class="btn num">*</button>
+            </div>
+
+            <div class="btnRow">
+                <button class="btn num">4</button>
+                <button class="btn num">5</button>
+                <button class="btn num">6</button>
+                <button class="btn num">-</button>
+            </div>
+
+            <div class="btnRow">
+                <button class="btn num">1</button>
+                <button class="btn num">2</button>
+                <button class="btn num">3</button>
+                <button class="btn num">+</button>
+            </div>
+
+            <div class="btnRowlast">
+                <button class="btn num">0</button>
+                <button class="btn num">.</button>
+                <button class="btn action">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('button').addEventListener('click' ,function (event) {
+            const btnValue = event.target.innerText;
+            const inputValue = document.getElementById('mainInput').value;
+
+
+            if (btnValue == 'C'){
+                document.getElementById('mainInput').value = '';
+            } 
+            else if (btnValue == '⌫'){
+                document.getElementById('mainInput').value = inputValue.slice(0,inputValue.length-1 );
+            } 
+            else if (btnValue == '='){
+                document.getElementById('secondaryInput').value = inputValue;
+                document.getElementById('mainInput').value = eval(inputValue);
+            } 
+            else{
+                document.getElementById('mainInput').value = inputValue + btnValue;
+            }
+        })
+    </script>
+</body>
+</html>
